@@ -1,9 +1,13 @@
 import {
+  IsIn,
   IsNotEmpty,
   IsOptional,
   IsString,
   MaxLength,
 } from 'class-validator';
+import { Users } from '../../auth/users.js'
+
+const validAsesores = Object.keys(Users).filter(key => Users[key].role === 'asesor');
 
 export class CreateSolicitudDto {
   @IsString()
@@ -21,5 +25,7 @@ export class CreateSolicitudDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(100)
+  // @IsIn es un decorador que viene por defecto en la librería class-validator y sirve para validar que el valor de una propiedad exista dentro de una lista específica de opciones permitidas (un arreglo).
+  @IsIn(validAsesores, { message: 'El asesor debe ser un usuario válido con rol de asesor.' })
   asesor?: string;
 }

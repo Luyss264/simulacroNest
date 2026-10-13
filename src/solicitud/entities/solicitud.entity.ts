@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 export enum EstadoSolicitud {
-    PENDIENTE = 'PANDIENTE',
+    PENDIENTE = 'PENDIENTE',
     EN_GESTION = 'EN_GESTION',
     RESUELTA = 'RESUELTA'
 }

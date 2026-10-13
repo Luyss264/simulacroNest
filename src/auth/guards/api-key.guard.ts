@@ -15,7 +15,7 @@ export class ApiKeyGuard implements CanActivate{
             .split(',')
             .map((key) => key.trim())
             .filter(Boolean);
-        
+
         if (typeof apikey !== 'string' || !configuredKeys.includes(apikey)) {
             throw new UnauthorizedException( 'x-api-key ausente o invalida' )
         }
